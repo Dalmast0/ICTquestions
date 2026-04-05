@@ -1,58 +1,17 @@
-/* ════════════════════════════════════════════════════════════════════
-   ██████████████████████████████████████████████████████████████████
-   ██                                                              ██
-   ██   CONTENT — EDIT THIS SECTION TO ADD UNITS AND LESSONS      ██
-   ██                                                              ██
-   ██████████████████████████████████████████████████████████████████
-   ════════════════════════════════════════════════════════════════════
 
-   ╔══════════════════════════════════════════════════════════════╗
-   ║  HOW TO ADD A NEW UNIT (a topic group)                       ║
-   ╠══════════════════════════════════════════════════════════════╣
-   ║  1. Copy one of the blocks below starting with {             ║
-   ║  2. Change the id to something unique  →  id: "u4"          ║
-   ║  3. Change name, description, icon                           ║
-   ║  4. Make sure the last item in the list has NO trailing ,    ║
-   ║                                                              ║
-   ║  ICON: any emoji works — 💡 🔒 🎨 🧪 📐 🖥️ 🌍              ║
-   ╚══════════════════════════════════════════════════════════════╝
-
-   ╔══════════════════════════════════════════════════════════════╗
-   ║  HOW TO ADD A NEW LESSON / TOPIC                             ║
-   ╠══════════════════════════════════════════════════════════════╣
-   ║  1. Copy one of the topic blocks below                       ║
-   ║  2. Change id to something unique  →  id: "t10"             ║
-   ║  3. Set unit_id to match the unit it belongs to              ║
-   ║  4. Write the lesson in the content field using Markdown     ║
-   ║  5. order controls the position in the unit list (0, 1, 2…) ║
-   ╚══════════════════════════════════════════════════════════════╝
-
-   ╔══════════════════════════════════════════════════════════════╗
-   ║  MARKDOWN QUICK REFERENCE                                    ║
-   ╠══════════════════════════════════════════════════════════════╣
-   ║  # Big heading     ## Smaller heading     ### Smallest       ║
-   ║  **bold**          *italic*               `code`             ║
-   ║  - bullet          1. numbered            > blockquote       ║
-   ║  | Col | Col |     | --- | --- |  (table rows)               ║
-   ║  ```python  ...code...  ```  (code block with syntax hint)   ║
-   ╚══════════════════════════════════════════════════════════════╝
-*/
 
 const UNITS = [
-  /* ── UNIT 1 ──────────────────────────────────────────────────── */
   {
     id:          "u1",
-    name:        "Digital Systems & Networks",
-    description: "How computers, hardware, and networks work together.",
+    name:        "Random 1",
+    description: "Python or smth",
     icon:        "💻",
     order:       0,
   },
-
-  /* ── UNIT 2 ──────────────────────────────────────────────────── */
   {
     id:          "u2",
-    name:        "Web & Programming",
-    description: "Building websites and the fundamentals of coding.",
+    name:        "Random2",
+    description: "HTML maybe",
     icon:        "🌐",
     order:       1,
   },
@@ -60,27 +19,15 @@ const UNITS = [
   /* ── UNIT 3 ──────────────────────────────────────────────────── */
   {
     id:          "u3",
-    name:        "Data & Information",
-    description: "How data is stored, processed, and presented.",
+    name:        "something idk",
+    description: "Databases maybe",
     icon:        "📊",
     order:       2,
   },
-
-  /* ── ADD MORE UNITS BELOW THIS LINE ──────────────────────────── */
-  /*
-  {
-    id:          "u4",
-    name:        "Cybersecurity",
-    description: "Protecting systems, data, and privacy online.",
-    icon:        "🔒",
-    order:       3,
-  },
-  */
 ]
 
 
 const TOPICS = [
-  /* ── TOPIC 1 (belongs to Unit 1) ────────────────────────────── */
   {
     id:      "t1",
     unit_id: "u1",
@@ -119,7 +66,6 @@ sharing a single internet connection.
 `,
   },
 
-  /* ── TOPIC 2 (belongs to Unit 1) ────────────────────────────── */
   {
     id:      "t2",
     unit_id: "u1",
@@ -311,38 +257,16 @@ ORDER BY grade DESC;
 `,
   },
 
-  /* ── ADD MORE TOPICS BELOW THIS LINE ─────────────────────────── */
-  /*
-  {
-    id:      "t6",
-    unit_id: "u1",          // ← which unit this belongs to
-    title:   "My New Lesson",
-    tags:    ["theory"],
-    order:   2,             // ← position in the unit (0, 1, 2…)
-    editor:  "Your Name",
-    edited:  "2025-02-01",
-    content: `
-# My New Lesson
-
-Write your lesson here using Markdown.
-    `,
-  },
-  */
 ]
 
 
-/* ════════════════════════════════════════════════════════════════════
-   ██ CONFIGURATION — change these if needed                       ██
-   ════════════════════════════════════════════════════════════════════ */
+
 
 const ADMIN_PASSCODE = 'ictadmin2025'   // ← change this!
 
 
-/* ════════════════════════════════════════════════════════════════════
-   ██ APP — you don't need to edit anything below this line        ██
-   ════════════════════════════════════════════════════════════════════ */
 
-/* ── localStorage helpers ─────────────────────────────────────── */
+
 const LS = {
   get: (k, def) => { try { const s = localStorage.getItem(k); return s ? JSON.parse(s) : def } catch { return def } },
   set: (k, v)   => { try { localStorage.setItem(k, JSON.stringify(v)) } catch {} },
@@ -356,7 +280,7 @@ const markVisited = id => { const v = getVisited(); v[id] = true; LS.set('ict_vi
 const genId = () => Math.random().toString(36).slice(2, 9)
 const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
 
-/* ── Dark mode ────────────────────────────────────────────────── */
+
 let dark = LS.get('ict_theme', 'light') === 'dark'
 const applyDark = on => {
   document.documentElement.classList.toggle('dark', on)
@@ -365,16 +289,16 @@ const applyDark = on => {
 applyDark(dark)
 function toggleDark() { dark = !dark; LS.set('ict_theme', dark ? 'dark' : 'light'); applyDark(dark) }
 
-/* ── State ────────────────────────────────────────────────────── */
+
 let currentTopic = null
 let adminAuthed  = sessionStorage.getItem('ict_admin') === '1'
 let sbExpanded   = {}
 
-/* ── DOM helpers ──────────────────────────────────────────────── */
+
 const $ = id => document.getElementById(id)
 const html = (el, content) => { if (el) el.innerHTML = content }
 
-/* ── Show / hide pages ────────────────────────────────────────── */
+
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
   const el = $('page-' + id)
@@ -383,7 +307,6 @@ function showPage(id) {
   closeSidebar()
 }
 
-/* ── Main router ──────────────────────────────────────────────── */
 function navigate(target, id) {
   if (target === 'home')       { renderHome();        showPage('home') }
   else if (target === 'unit')  { renderUnit(id);      showPage('unit') }
@@ -396,7 +319,7 @@ function navigate(target, id) {
   else if (target === 'admin-edit-topic') { renderTopicForm(id);         showPage('admin') }
 }
 
-/* ── Sidebar ──────────────────────────────────────────────────── */
+
 function renderSidebar() {
   const units  = loadUnits().sort((a, b) => a.order - b.order)
   const topics = loadTopics().sort((a, b) => a.order - b.order)
@@ -466,7 +389,6 @@ function renderHome() {
        </div>`)
 }
 
-/* ── Unit overview ────────────────────────────────────────────── */
 function renderUnit(id) {
   const units  = loadUnits()
   const topics = loadTopics()
@@ -506,14 +428,13 @@ function renderUnit(id) {
         <p>No lessons yet. <a href="#" onclick="navigate('admin');return false;">Add one →</a></p>
        </div>`)
 
-  // Wrap in page-inner
   const pg = $('page-unit')
   if (!pg.querySelector('.page-inner')) {
     pg.innerHTML = `<div class="page-inner">${pg.innerHTML}</div>`
   }
 }
 
-/* ── Topic page ───────────────────────────────────────────────── */
+
 function renderTopic(id) {
   const topics = loadTopics()
   const units  = loadUnits()
@@ -633,7 +554,7 @@ function doSearch(q) {
   )
 }
 
-/* ── Admin gate ───────────────────────────────────────────────── */
+
 function renderAdmin(sub, subId) {
   const el = $('page-admin')
   if (!adminAuthed) { renderGate(el); return }
@@ -672,7 +593,6 @@ function checkPasscode() {
   }
 }
 
-/* ── Admin dashboard ──────────────────────────────────────────── */
 function renderDashboard(el) {
   el = el || $('page-admin')
   const units  = loadUnits().sort((a, b) => a.order - b.order)
@@ -748,7 +668,6 @@ function renderDashboard(el) {
     </div>`
 }
 
-/* ── Manage units ─────────────────────────────────────────────── */
 function renderManageUnits(el) {
   el = el || $('page-admin')
   const EMOJIS = ['📘','💻','🌐','🔒','🎨','🧠','📊','⚙️','🔬','📱','🗄️','🧩','🔧','📐','🖥️','🌍','⚡','🔗']
@@ -854,7 +773,6 @@ function deleteUnit(id) {
   navigate('admin-units')
 }
 
-/* ── Topic form (new + edit) ──────────────────────────────────── */
 function renderTopicForm(topicId, preUnitId, el) {
   el = el || $('page-admin')
   const units  = loadUnits().sort((a, b) => a.order - b.order)

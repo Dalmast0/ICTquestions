@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ICT MYP Knowledge Base</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Markdown renderer -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════════ NAV ══════════════ -->
+  <nav id="nav">
+    <button id="menu-btn" onclick="toggleSidebar()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-logo" onclick="navigate('home')">
+      <span class="nav-badge">ICT</span>
+      <span class="nav-title">MYP Knowledge Base</span>
+    </div>
+    <div class="nav-spacer"></div>
+    <div class="nav-search-wrap">
+      <span class="nav-search-icon">⌕</span>
+      <input id="nav-search-input" type="text" placeholder="Quick search…"
+             onkeydown="if(event.key==='Enter')doSearch(this.value)" />
+    </div>
+    <div class="nav-links">
+      <span onclick="navigate('home')">Home</span>
+      <span onclick="navigate('about')">About</span>
+      <span onclick="navigate('admin')">Admin</span>
+    </div>
+    <button id="dark-btn" onclick="toggleDark()" title="Toggle dark mode">◐</button>
+  </nav>
+
+  <!-- ══════════════ SIDEBAR ══════════════ -->
+  <div id="sidebar-overlay" onclick="closeSidebar()"></div>
+  <aside id="sidebar">
+    <div id="sidebar-header">
+      <span class="sidebar-label">Curriculum</span>
+      <div class="sidebar-toggles">
+        <span onclick="sidebarExpandAll()">All</span>
+        <span class="sep">·</span>
+        <span onclick="sidebarCollapseAll()">None</span>
+      </div>
+    </div>
+    <div id="sidebar-list"></div>
+  </aside>
+
+  <!-- ══════════════ MAIN ══════════════ -->
+  <main id="main">
+
+    <!-- HOME -->
+    <section id="page-home" class="page active">
+      <div class="hero">
+        <div class="hero-tag">MYP · ICT</div>
+        <h1 class="hero-title">Knowledge<br><em>Base</em></h1>
+        <p class="hero-sub">Lessons, guides, and resources for MYP ICT — organised by curriculum unit.</p>
+        <div class="hero-search">
+          <span class="search-icon-inner">⌕</span>
+          <input id="home-search" type="text"
+                 placeholder="Search topics, lessons, keywords…"
+                 onkeydown="if(event.key==='Enter')doSearch(this.value)" />
+          <button onclick="doSearch(document.getElementById('home-search').value)">Search</button>
+        </div>
+      </div>
+      <div class="units-section">
+        <div class="section-header">
+          <h2>Curriculum Units</h2>
+          <span class="section-hint">Select a unit to explore its lessons</span>
+        </div>
+        <div id="unit-grid"></div>
+      </div>
+    </section>
+
+    <!-- UNIT OVERVIEW -->
+    <section id="page-unit" class="page">
+      <nav class="breadcrumb" id="unit-breadcrumb"></nav>
+      <div id="unit-header"></div>
+      <div id="unit-topics"></div>
+    </section>
+
+    <!-- TOPIC PAGE -->
+    <section id="page-topic" class="page">
+      <nav class="breadcrumb" id="topic-breadcrumb"></nav>
+      <div id="topic-header"></div>
+      <div class="tags-row" id="topic-tags"></div>
+      <div class="content-card">
+        <div class="prose" id="topic-content"></div>
+      </div>
+      <div class="topic-nav" id="topic-nav"></div>
+    </section>
+
+    <!-- SEARCH -->
+    <section id="page-search" class="page">
+      <div class="page-title-row">
+        <h1>Search</h1>
+      </div>
+      <div class="search-bar-wrap">
+        <span class="search-icon-inner">⌕</span>
+        <input id="search-input" type="text"
+               placeholder="Search topics, lessons, keywords…"
+               onkeydown="if(event.key==='Enter')doSearch(this.value)" />
+        <button onclick="doSearch(document.getElementById('search-input').value)">Go</button>
+      </div>
+      <div id="search-results"></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="page-about" class="page">
+      <div class="page-title-row"><h1>About</h1></div>
+      <div class="content-card">
+        <div class="prose">
+          <p>The <strong>MYP ICT Knowledge Base</strong> is a simple, offline-friendly resource for students studying ICT in the Middle Years Programme.</p>
+          <h2>How content is added</h2>
+          <p>Teachers open <code>app.js</code> and add entries to the <code>UNITS</code> and <code>TOPICS</code> arrays — no coding knowledge needed beyond copy-paste. The admin panel also allows in-browser editing that saves to local storage.</p>
+          <h2>Features</h2>
+          <ul>
+            <li>Browse lessons by curriculum unit</li>
+            <li>Full-text search across all content</li>
+            <li>Track which lessons you have visited (✓)</li>
+            <li>Dark mode</li>
+            <li>Print-friendly lesson pages</li>
+            <li>No internet, no install, no server required</li>
+          </ul>
+          <h2>Three files</h2>
+          <ul>
+            <li><code>index.html</code> — page structure</li>
+            <li><code>style.css</code> — visual design</li>
+            <li><code>app.js</code> — all logic and content data</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN (rendered by JS) -->
+    <section id="page-admin" class="page"></section>
+
+  </main>
+
+  <!-- Logic & Data -->
+  <script src="app.js"></script>
+</body>
+</html>

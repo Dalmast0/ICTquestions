@@ -5,19 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ICT MYP Knowledge Base</title>
 
-  <!-- Fonts -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <!-- Markdown renderer -->
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
 
-  <!-- Styles -->
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ══════════════ NAV ══════════════ -->
   <nav id="nav">
     <button id="menu-btn" onclick="toggleSidebar()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -40,7 +39,7 @@
     <button id="dark-btn" onclick="toggleDark()" title="Toggle dark mode">◐</button>
   </nav>
 
-  <!-- ══════════════ SIDEBAR ══════════════ -->
+
   <div id="sidebar-overlay" onclick="closeSidebar()"></div>
   <aside id="sidebar">
     <div id="sidebar-header">
@@ -54,10 +53,9 @@
     <div id="sidebar-list"></div>
   </aside>
 
-  <!-- ══════════════ MAIN ══════════════ -->
   <main id="main">
 
-    <!-- HOME -->
+
     <section id="page-home" class="page active">
       <div class="hero">
         <div class="hero-tag">MYP · ICT</div>
@@ -80,14 +78,14 @@
       </div>
     </section>
 
-    <!-- UNIT OVERVIEW -->
+ 
     <section id="page-unit" class="page">
       <nav class="breadcrumb" id="unit-breadcrumb"></nav>
       <div id="unit-header"></div>
       <div id="unit-topics"></div>
     </section>
 
-    <!-- TOPIC PAGE -->
+ 
     <section id="page-topic" class="page">
       <nav class="breadcrumb" id="topic-breadcrumb"></nav>
       <div id="topic-header"></div>
@@ -113,7 +111,7 @@
       <div id="search-results"></div>
     </section>
 
-    <!-- ABOUT -->
+
     <section id="page-about" class="page">
       <div class="page-title-row"><h1>About</h1></div>
       <div class="content-card">
@@ -140,7 +138,7 @@
       </div>
     </section>
 
-    <!-- ADMIN (rendered by JS) -->
+
     <section id="page-admin" class="page"></section>
 
   </main>
